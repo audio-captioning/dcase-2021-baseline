@@ -1,7 +1,7 @@
-# Audio captioning DCASE 2020 baseline system
+# Audio captioning DCASE 2021 baseline system
 
 Welcome to the repository of the audio captioning baseline system
-for the DCASE challenge of 2020. 
+for the DCASE challenge of 2021. 
 
 Here you can find the complete code of the baseline system, consisting
 of:
@@ -64,7 +64,7 @@ If you want or need a bit more details, then read the following sections.
 
 ## Setting up the code
 
-To start using the audio captioning DCASE 2020 baseline system, firstly you
+To start using the audio captioning DCASE 2021 baseline system, firstly you
 have to set-up the code. Please **note bold** that the code in this repository
 is tested with Python 3.7.
 
@@ -76,11 +76,11 @@ To set-up the code, you have to do the following:
 Use the following command to clone this repository at your terminal:
 
 ````shell script
-$ git clone git@github.com:audio-captioning/dacse-2020-baseline.git
+$ git clone git@github.com:audio-captioning/dacse-2021-baseline.git
 ````
 
-The above command will create the directory `dacse-2020-baseline` and populate
-it with the contents of this repository. The `dacse-2020-baseline` directory 
+The above command will create the directory `dacse-2021-baseline` and populate
+it with the contents of this repository. The `dacse-2021-baseline` directory 
 will be called root directory for the rest of this README file. 
   
 For installing the dependencies, there are two ways. You can either use conda or
@@ -96,7 +96,7 @@ $ conda create --name audio-captioning-baseline --file requirements_conda.yaml
 ````
 
 The above command will create a new environment called `audio-captioning-baseline`, which 
-will have set-up all the dependencies for the audio captioning DCASE 2020 baseline.  To 
+will have set-up all the dependencies for the audio captioning DCASE 2021 baseline.  To 
 activate the `audio-captioning-baseline` environment, you can issue the following command"
 
 ````shell script
@@ -108,7 +108,7 @@ Now, you are ready to proceed to the following steps.
 ### Using pip for installing dependencies
 
 If you do not use anaconda/conda, you can use the default Python package manager to install
-the dependencies of the audio captioning DCASE 2020 baseline. To do so, you have to issue
+the dependencies of the audio captioning DCASE 2021 baseline. To do so, you have to issue
 the following command at the terminal (when you are inside the root directory): 
 
 ````shell script
@@ -122,14 +122,14 @@ to the following steps.
 
 ## Preparing the data
 
-After setting-up the code for the audio captioning DCASE 2020 baseline system, you have to
+After setting-up the code for the audio captioning DCASE 2021 baseline system, you have to
 obtain the Clotho dataset, place it to the proper directory, and do the feature extraction.
 
 ### Getting the data from Zenodo
 
 Clotho dataset is freely available online at the Zenodo platform. 
 You can find Clotho at
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3490684.svg)](https://doi.org/10.5281/zenodo.3490684)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3490683.svg)](https://doi.org/10.5281/zenodo.3490683)
  
 You should download all `.7z` files and the `.csv` files with the captions. That is, you have
 do download the following files from Zenodo: 
@@ -256,7 +256,7 @@ that were created in the [create the dataset](#create-the-dataset) section.
 
 To use the pre-trained model, you have first to obtain the pre-trained weights. The
 pre-trained weights are freely available online at Zenodo
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3697687.svg)](https://doi.org/10.5281/zenodo.3697687)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4835966.svg)](https://doi.org/10.5281/zenodo.4835966)
 
 ### Evaluate predictions
 
