@@ -135,9 +135,11 @@ You should download all `.7z` files and the `.csv` files with the captions. That
 do download the following files from Zenodo: 
 
   1. `clotho_audio_development.7z`
-  2. `clotho_audio_evaluation.7z`
-  3. `clotho_captions_development.csv`
-  4. `clotho_captions_evaluation.csv`
+  2. `clotho_audio_validation.7z`
+  3. `clotho_audio_evaluation.7z`
+  4. `clotho_captions_development.csv`
+  5. `clotho_captions_validation.csv`
+  6. `clotho_captions_evaluation.csv`
   
 After downloading the files, you should place them in the `data` directory, in your root directory.
 
@@ -158,13 +160,16 @@ is evaluation, and it will be created by the `clotho_audio_evaluation.7z` file. 
 have the following files and directories at your `root/data` directory: 
 
   1. `development` directory
-  2. `evaluation` directory
+  2. `validation` directory
+  3. `evaluation` directory
   3. `clotho_captions_development.csv` file
-  4. `clotho_captions_evaluation.csv` file
+  4. `clotho_captions_validation.csv` file
+  5. `clotho_captions_evaluation.csv` file
   
-The `development` directory contains 2163 audio files and the `evaluation` directory 1045 audio
-files. You should move the `development` and `evaluation` directories in the `data/clotho_audio_files`
-directory, and the `clotho_captions_development.csv` and `clotho_captions_evaluation.csv` files in
+The `development` directory contains 3840 audio files, the validation directory contains 1046 audio
+files, and the `evaluation` directory 1045 audio files. You should move the `development`, `validation`,
+and `evaluation` directories in the `data/clotho_audio_files` directory, and the `clotho_captions_development.csv`,
+`clotho_captions_validation.csv`, and `clotho_captions_evaluation.csv` files in
 the `data/clotho_csv_files` directory. Thus, there should be the following structure in your `data`
 directory:
 
@@ -172,9 +177,11 @@ directory:
     data/
      | - clotho_audio_files/
      |   | - development/
+     |   | - validation/
      |   | - evaluation/
      | - clotho_csv_files/
      |   |- clotho_captions_development.csv
+     |   |- clotho_captions_validation.csv
      |   |- clotho_captions_evaluation.csv 
  
 
@@ -215,8 +222,9 @@ The result of the dataset creation process will be the creation of the directori
 
   1. `data/data_splits`, 
   2. `data/data_splits/development`, 
-  3. `data/data_splits/evaluation`, and
-  2. `data/pickles`
+  3. `data/data_splits/validation`, 
+  4. `data/data_splits/evaluation`, and
+  5. `data/pickles`
   
 The directories in `data/data_splits` have the input and output examples for the optimization
 and assessment of the baseline DNN. The `data/pickles` directory holds the `pickle` files that
@@ -334,15 +342,18 @@ The `settings/dirs_and_files.yaml` file, holds the following settings:
       data: 'data'
     dataset:
       development: &dev 'development'
+      validation: &val 'validation'
       evaluation: &eva 'evaluation'
       features_dirs:
         output: 'data_splits'
         development: *dev
+        validation: *val
         evaluation: *eva
       audio_dirs:
         downloaded: 'clotho_audio_files'
         output: 'data_splits_audio'
         development: *dev
+        validation: *val
         evaluation: *eva
       annotations_dir: 'clotho_csv_files'
       pickle_files_dir: 'pickles'
@@ -377,6 +388,7 @@ The `dataset/features_dirs` has the directory names that:
 
   * parent directory for the ready-to-use features - `output`
   * the development features - `development`
+  * the validation features - `validation`
   * the evaluation features - `evaluation`
 
 The `dataset/audio` has the directory names that:
@@ -384,6 +396,7 @@ The `dataset/audio` has the directory names that:
   * the downloaded audio will be - `downloaded`
   * the dataset files (i.e. the input/output examples) will be - `output`
   * the name of the directory that will hold the development data - `development`
+  * the name of the directory that will hold the validation data - `validation`
   * the name of the directory that will hold the evaluation data - `evaluation`
   
 The `annotations_dir` and `pickle_files_dir` hold the names of the directories where the
@@ -420,6 +433,7 @@ The file `settings/dataset_creation.yaml` has:
       validate_dataset: No
     annotations:
       development_file: 'clotho_captions_development.csv'
+      validation_file: 'clotho_captions_validation.csv'
       evaluation_file: 'clotho_captions_evaluation.csv'
       audio_file_column: 'file_name'
       captions_fields_prefix: 'caption_{}'
@@ -445,6 +459,7 @@ The `annotations` block holds the settings needed for accessing and processing t
 (i.e. the csv files) of Clotho. That is: 
 
   * the name of the file holding the annotations of the development split - `development_file`
+  * the name of the file holding the annotations of the validation split - `validation_file`
   * the name of the file holding the annotations of the evaluation split - `evaluation_file`
   * the name of the column in the annotations file that has the file name
   of the corresponding audio file - 'audio_file_column'
